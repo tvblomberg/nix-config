@@ -6,7 +6,7 @@
       url = "nixpkgs/nixos-23.05";
     };
     home-manager = {
-      url = "github:nix-community/home-manager";
+      url = "github:nix-community/home-manager/release-23.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -21,7 +21,7 @@
       nixos-dev-vm = lib.nixosSystem {
       	inherit system;
 	modules = [
-	  ./configuration.nix
+	  ./configuration-vm.nix
 	];
       };
     };

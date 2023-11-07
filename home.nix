@@ -64,6 +64,21 @@
   home.sessionVariables = {
     # EDITOR = "emacs";
   };
+  
+  # Git Configuration
+  programs.git = {
+    enable = true;
+    userEmail = "thomas.v.blomberg@gmail.com";
+    userName = "Thomas V. Blomberg";
+  };
+
+  # Bash Configuration
+  programs.bash = {
+    enable = true;
+    shellAliases = {
+      vim = "nvim";
+    };
+  };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
