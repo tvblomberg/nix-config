@@ -19,6 +19,9 @@ in {
     [ # Include the results of the hardware scan.
       ./hardware-configuration-hal.nix
     ];
+  
+  # Allow unfree
+  nixpkgs.config.allowUnfree = true;
 
   # GTK Portal
   xdg.portal = { enable = true; extraPortals = [ pkgs.xdg-desktop-portal-gtk ]; };
@@ -44,7 +47,7 @@ in {
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
-  # SDDM
+  # SDDMnixpkgs.config.allowUnfree = true;
   services.xserver.displayManager.gdm = {
     enable = true;
     wayland = true;

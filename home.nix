@@ -1,6 +1,8 @@
 { config, pkgs, ... }:
 
 {
+  # Allow Unfree
+  nixpkgs.config.allowUnfree = true;
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "invincent";
@@ -24,37 +26,41 @@
     pkgs.neovim
     pkgs.font-awesome
     pkgs.firefox
-    # # Adds the 'hello' command to your environment. It prints a friendly
-    # # "Hello, world!" when run.
-    # pkgs.hello
-
-    # # It is sometimes useful to fine-tune packages, for example, by applying
-    # # overrides. You can do that directly here, just don't forget the
-    # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
-    # # fonts?
-    # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
-
-    # # You can also create simple shell scripts directly inside your
-    # # configuration. For example, this adds a command 'my-hello' to your
-    # # environment:
-    # (pkgs.writeShellScriptBin "my-hello" ''
-    #   echo "Hello, ${config.home.username}!"
-    # '')
+    pkgs.noto-fonts
+    pkgs.nerdfonts
+    pkgs.distrobox
+    pkgs.podman
+    pkgs.obsidian
+    pkgs.jetbrains.rider
+    pkgs.spotify
+    pkgs.discord
+    pkgs.gnome.nautilus
+    pkgs.swww
+    pkgs.watershot
+    pkgs.wl-screenrec
+    pkgs.hyprkeys
+    pkgs.swaylock-effects
+    pkgs.podman-desktop
   ];
+
+  # Dunst 
+  services.dunst = {
+    enable = true;
+  };
+
+  # Logout
+  programs.wlogout = {
+    enable = true;
+  };
+
+  # Clipboard Management
+  services.clipman = {
+    enable = true;
+  };
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {
-    # # Building this configuration will create a copy of 'dotfiles/screenrc' in
-    # # the Nix store. Activating the configuration will then make '~/.screenrc' a
-    # # symlink to the Nix store copy.
-    # ".screenrc".source = dotfiles/screenrc;
-
-    # # You can also set the file content immediately.
-    # ".gradle/gradle.properties".text = ''
-    #   org.gradle.console=verbose
-    #   org.gradle.daemon.idletimeout=3600000
-    # '';
   };
 
   # You can also manage environment variables but you will have to manually
@@ -104,6 +110,12 @@
   };
 
   home.sessionVariables.GTK_THEME = "palenight"; 
+
+  # VS Code
+  programs.vscode = {
+    enable = true;
+  };
+
   # Git Configuration
   programs.git = {
     enable = true;
@@ -132,9 +144,13 @@
     };
   };
 
+  home.file.".config/waybar/config".source = ./waybar/config;
+  home.file.".config/waybar/style.css".source = ./waybar/style.css;
+
   # Rofi Configuration
   programs.rofi = {
     enable = true;
+    theme = ./rofi/palenight.rasi;
   };
 
   # Hyprland Config
