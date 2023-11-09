@@ -14,11 +14,16 @@
   # want to update the value, then make sure to first check the Home Manager
   # release notes.
   home.stateVersion = "22.11"; # Please read the comment before changing.
+  
+  # Enable Font Config
+  fonts.fontconfig.enable = true;
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = [
     pkgs.neovim
+    pkgs.font-awesome
+    pkgs.firefox
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
@@ -65,7 +70,40 @@
   home.sessionVariables = {
     # EDITOR = "emacs";
   };
-  
+
+  # GTK
+   gtk = {
+    enable = true;
+
+    iconTheme = {
+      name = "Papirus-Dark";
+      package = pkgs.papirus-icon-theme;
+    };
+
+    theme = {
+      name = "palenight";
+      package = pkgs.palenight-theme;
+    };
+
+    cursorTheme = {
+      name = "Numix-Cursor";
+      package = pkgs.numix-cursor-theme;
+    };
+
+    gtk3.extraConfig = {
+      Settings = ''
+        gtk-application-prefer-dark-theme=1
+      '';
+    };
+
+    gtk4.extraConfig = {
+      Settings = ''
+        gtk-application-prefer-dark-theme=1
+      '';
+    };
+  };
+
+  home.sessionVariables.GTK_THEME = "palenight"; 
   # Git Configuration
   programs.git = {
     enable = true;
@@ -89,7 +127,9 @@
   # Waybar Configuration
   programs.waybar = {
     enable = true;
-    systemd.enable = true;
+    systemd = {
+      enable = true;
+    };
   };
 
   # Rofi Configuration
@@ -99,18 +139,8 @@
 
   # Hyprland Config
   wayland.windowManager.hyprland.extraConfig = ''
-   # This is an example Hyprland config file.
-#
-# Refer to the wiki for more information.
-
-#
-# Please note not all available settings / options are set here.
-# For a full list, see the wiki
-#
-
 # See https://wiki.hyprland.org/Configuring/Monitors/
-monitor=,preferred,auto,auto
-
+monitor=,highres,auto,1.25
 
 # See https://wiki.hyprland.org/Configuring/Keywords/ for more
 
@@ -134,7 +164,7 @@ input {
     follow_mouse = 1
 
     touchpad {
-        natural_scroll = false
+        natural_scroll = true 
     }
 
     sensitivity = 0 # -1.0 - 1.0, 0 means no modification.
@@ -144,7 +174,7 @@ general {
     # See https://wiki.hyprland.org/Configuring/Variables/ for more
 
     gaps_in = 5
-    gaps_out = 20
+    gaps_out = 10
     border_size = 2
     col.active_border = rgba(33ccffee) rgba(00ff99ee) 45deg
     col.inactive_border = rgba(595959aa)
@@ -202,7 +232,7 @@ master {
 
 gestures {
     # See https://wiki.hyprland.org/Configuring/Variables/ for more
-    workspace_swipe = false
+    workspace_swipe = true
 }
 
 misc {
@@ -227,12 +257,12 @@ device:epic-mouse-v1 {
 $mainMod = SUPER
 
 # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
-bind = $mainMod, Q, exec, kitty
-bind = $mainMod, C, killactive,
+bind = $mainMod, RETURN, exec, kitty
+bind = $mainMod_SHIFT, Q, killactive,
 bind = $mainMod, M, exit,
 bind = $mainMod, E, exec, dolphin
 bind = $mainMod, V, togglefloating,
-bind = $mainMod, R, exec, wofi --show drun
+bind = $mainMod, SPACE, exec, rofi -show drun -show-icons
 bind = $mainMod, P, pseudo, # dwindle
 bind = $mainMod, J, togglesplit, # dwindle
 
