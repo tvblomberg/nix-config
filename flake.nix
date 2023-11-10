@@ -13,7 +13,7 @@
     hyprland.url = "github:hyprwm/Hyprland";
   };
 
-  outputs = { self, nixpkgs, home-manager, hyprland, ... }:
+  outputs = { self, nixpkgs, home-manager, hyprland, ... }@inputs:
     let
       system = "x86_64-linux";
       lib = nixpkgs.lib;
@@ -23,29 +23,25 @@
       nixos-dev-vm = lib.nixosSystem {
       	inherit system;
 	modules = [
-	  ./configuration-vm.nix
+	  ./hardware/configuration-vm.nix
 	];
       };
       hal = lib.nixosSystem {
         inherit system;
 	modules = [
-	  ./configuration-hal.nix
+	  ./hardware/configuration-hal.nix
 	];
       };
     };
     homeConfigurations."invincent" = home-manager.lib.homeManagerConfiguration {
       inherit pkgs;
 
-     # Specify your home configuration modules here, for example,
-     # the path to your home.nix.
       modules = [ 
         ./home.nix
-        hyprland.homeManagerModules.default
-        { wayland.windowManager.hyprland.enable = true; } 
       ];
 
-     # Optionally use extraSpecialArgs
-     # to pass through arguments to home.nix
+      extraSpecialArgs = { inherit inputs; };
+
     };
   };
 }

@@ -19,6 +19,18 @@ in {
     [ # Include the results of the hardware scan.
       ./hardware-configuration-hal.nix
     ];
+  # Power Management
+  powerManagement.enable = true;
+
+  # Power behavior
+  services.logind = {
+    lidSwitch = "suspend-then-hibernate";
+    powerKeyLongPress = "hibernate";
+    powerKey = "lock";
+  };
+    
+  # Needed for steam
+  hardware.opengl.driSupport32Bit = true;  
   
   # Allow unfree
   nixpkgs.config.allowUnfree = true;
@@ -88,6 +100,12 @@ in {
   system.stateVersion = "23.05"; # Did you read the comment?
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];  
-
+  
+  system.activationScripts.binbash = {
+    deps = [ "binsh" ];
+    text = ''
+         ln -s /bin/sh /bin/bash
+    '';
+  };
 }
 
