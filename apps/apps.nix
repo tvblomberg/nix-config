@@ -17,7 +17,9 @@
     pkgs.xfce.thunar
     pkgs.dotnet-sdk
     pkgs.azure-functions-core-tools
- 
+    pkgs.pavucontrol
+    pkgs.lens
+    pkgs.remmina
   ];
 
   imports = [

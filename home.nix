@@ -23,6 +23,9 @@
   ];
 
   imports = [
+    # Theme Setup
+    ./theme/theme.nix
+
     # Setup Window Manager OR Desktop Environment
     ./home-environment/home-environment.nix
 
@@ -32,6 +35,7 @@
 
   home.sessionVariables = {
     NIXOS_OZONE_WL = "1";
+    XDG_CURRENT_DESKTOP = "sway";
   };
 
 

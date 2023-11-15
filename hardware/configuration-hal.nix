@@ -59,7 +59,7 @@ in {
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
-  # SDDMnixpkgs.config.allowUnfree = true;
+  # GDM
   services.xserver.displayManager.gdm = {
     enable = true;
     wayland = true;

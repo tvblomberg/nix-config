@@ -1,5 +1,9 @@
-{ pkgs, inputs, ... }:
-
+{ pkgs, inputs, config, ... }:
+let
+  backgroundColor = config.colorScheme.colors.base00;
+  borderColor = config.colorScheme.colors.base05;
+  textColor = config.colorScheme.colors.base04;
+in
 {
   imports = [
     inputs.hyprland.homeManagerModules.default
@@ -22,7 +26,7 @@ xwayland {
 # See https://wiki.hyprland.org/Configuring/Keywords/ for more
 
 # Execute your favorite apps at launch
-# exec-once = waybar & hyprpaper & firefox
+exec-once = swww init & swww img ~/.dotfiles/theme/wallpapers/wallpaper.png 
 
 # Source a file (multi-file configs)
 # source = ~/.config/hypr/myColors.conf
@@ -53,8 +57,8 @@ general {
     gaps_in = 5
     gaps_out = 10
     border_size = 2
-    col.active_border = rgba(33ccffee) rgba(00ff99ee) 45deg
-    col.inactive_border = rgba(595959aa)
+    col.active_border = rgb(${borderColor}) rgb(${backgroundColor}) 45deg
+    col.inactive_border = rgb(${backgroundColor})
 
     layout = dwindle
 
@@ -134,6 +138,7 @@ device:epic-mouse-v1 {
 $mainMod = SUPER
 
 # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
+bind = $mainMod, F, fullscreen
 bind = $mainMod, RETURN, exec, kitty
 bind = $mainMod_SHIFT, Q, killactive,
 bind = $mainMod, M, exit,
@@ -142,6 +147,7 @@ bind = $mainMod, V, togglefloating,
 bind = $mainMod, SPACE, exec, rofi -show drun -show-icons
 bind = $mainMod, P, pseudo, # dwindle
 bind = $mainMod, J, togglesplit, # dwindle
+bind = $mainMod, ESCAPE, exec, wlogout
 
 # Move focus with mainMod + arrow keys
 bind = $mainMod, left, movefocus, l

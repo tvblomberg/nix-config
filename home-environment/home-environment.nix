@@ -4,11 +4,12 @@
   # Packages that support the Home Environment
   home.packages = [
     pkgs.swww
-    pkgs.watershot
     pkgs.wl-screenrec
     pkgs.hyprkeys
     pkgs.swaylock-effects
   ];
+
+  services.flameshot.enable = true;
 
   imports = [
     # Hyprland Window Manager
