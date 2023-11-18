@@ -22,12 +22,13 @@
     pkgs.lens
     pkgs.remmina
     pkgs.networkmanagerapplet
-    pkgs.brave
     pkgs.gcc
+    pkgs.bottles
   ];
 
   home.file.".config" = {
     source = ./nvim;
+    target = ".config/nvim";
     recursive = true;
   };
 
@@ -37,5 +38,14 @@
     ./kitty/kitty.nix
     ./bash/bash.nix
   ];
+
+  xdg.desktopEntries."teams" = {
+    name = "Teams";
+    genericName = "Application";
+    exec = "brave --app=https://teams.microsoft.com";
+    terminal = false;
+    categories = [ "Application" ];
+    mimeType = [ "text/html" "text/xml" ];
+  };
 
 }

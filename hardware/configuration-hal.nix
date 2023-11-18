@@ -76,7 +76,7 @@ in {
   users.users.invincent = {
     isNormalUser = true;
     initialPassword = "letmeindamnit";
-    extraGroups = [ "wheel" "input" "uinput" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "input" "uinput" "libvirtd"]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
     ];
   };
@@ -117,5 +117,8 @@ in {
          ln -s /bin/sh /bin/bash
     '';
   };
+
+  virtualisation.libvirtd.enable = true;
+  programs.virt-manager.enable = true;
 }
 

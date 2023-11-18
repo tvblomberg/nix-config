@@ -38,6 +38,14 @@
     XDG_CURRENT_DESKTOP = "sway";
   };
 
+  # Default virtman Setup
+  dconf.settings = {
+    "org/virt-manager/virt-manager/connections" = {
+      autoconnect = ["qemu:///system"];
+      uris = ["qemu:///system"];
+  };
+};
+
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
