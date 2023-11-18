@@ -23,6 +23,7 @@
     pkgs.remmina
     pkgs.networkmanagerapplet
     pkgs.brave
+    pkgs.gcc
   ];
 
   home.file.".config" = {
