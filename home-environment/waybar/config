@@ -1,10 +1,10 @@
 {
     "layer": "top", // Waybar at top layer
     "height": 36, // Waybar height (to be removed for auto height)
-    "spacing": 4, // Gaps between modules (4px)
-    "modules-left": ["hyprland/workspaces", "hyprland/submap"],
+    "spacing": 2, // Gaps between modules (4px)
+    "modules-left": ["custom/apps", "hyprland/workspaces", "hyprland/submap"],
     "modules-center": ["hyprland/window"],
-    "modules-right": ["idle_inhibitor", "backlight", "network", "cpu", "memory", "battery", "clock", "tray"],
+    "modules-right": ["backlight", "cpu", "memory", "battery", "clock", "tray", "custom/poweroff"],
     "backlight": {
       "device": "intel_backlight",
       "format": "{percent}% {icon}",
@@ -13,13 +13,16 @@
     "hyprland/submap": {
         "format": "<span style=\"italic\">{}</span>"
     },
-    "idle_inhibitor": {
-        "format": "{icon}",
-        "format-icons": {
-            "activated": "",
-            "deactivated": ""
-        }
-    },
+    "bluetooth": {
+        "on-click": "blueman-manager",
+  	"format": " {status}",
+  	"format-connected": " {device_alias}",
+  	"format-connected-battery": " {device_alias} {device_battery_percentage}%",
+  	"tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+  	"tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+  	"tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+  	"tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%"
+    }, 
     "tray": {
         // "icon-size": 21,
         "spacing": 10
@@ -27,11 +30,13 @@
     "clock": {
         // "timezone": "America/New_York",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": "{:%Y-%m-%d}"
+        "format-alt": "{:%Y-%m-%d}",
+	"on-click": "btop"
     },
     "cpu": {
         "format": "{usage}% ",
-        "tooltip": false
+        "tooltip": false,
+	"on-click": "btop"
     },
     "memory": {
         "format": "{}% "
@@ -51,16 +56,23 @@
         "format-icons": ["", "", "", "", ""]
     },
     "network": {
-        // "interface": "wlp2*", // (Optional) To force the use of this interface
         "format-wifi": "({signalStrength}%) ",
         "format-ethernet": "",
         "tooltip-format": "{ifname} via {gwaddr} ",
         "format-linked": "{ifname} (No IP) ",
         "format-disconnected": "⚠",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+        "format-alt": "{ifname}: {ipaddr}/{cidr}",
+	"on-click": "nm-applet"
     },
     "custom/poweroff": {
-
+	"format": " ",
+	"tooltip": false,
+	"on-click": "wlogout"
+    },
+    "custom/apps": {
+      "format": "  ",
+      "tooltip": false,
+      "on-click": "rofi -show drun"
     }
  }
 

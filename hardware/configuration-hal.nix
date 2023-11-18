@@ -26,7 +26,7 @@ in {
   services.logind = {
     lidSwitch = "suspend-then-hibernate";
     powerKeyLongPress = "hibernate";
-    powerKey = "lock";
+    powerKey = "hibernate";
   };
     
   # Needed for steam
@@ -76,10 +76,12 @@ in {
   users.users.invincent = {
     isNormalUser = true;
     initialPassword = "letmeindamnit";
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "input" "uinput" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
     ];
   };
+
+  hardware.uinput.enable = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -90,6 +92,14 @@ in {
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
+
+  hardware.bluetooth = {
+    enable = true;
+    package = pkgs.bluez;
+    powerOnBoot = false;
+  };
+
+  services.blueman.enable = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

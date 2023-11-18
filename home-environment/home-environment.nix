@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ pkgs, config, inputs, ... }:
 
 {
   # Packages that support the Home Environment
@@ -26,7 +26,19 @@
     ./wlogout/wlogout.nix
     # Clipboard Management
     ./clipman/clipman.nix
+    # Remap Keys
+    inputs.xremap-flake.homeManagerModules.default
   ];
 
-
+  services.xremap = {
+    withHypr = true;
+    #withWlroots = true;
+    yamlConfig = ''
+modmap:                                                                                                                                                                                       
+  - name: Default
+    remap: # Required
+      # Replace a key with another
+      KEY_CAPSLOCK: KEY_LEFTMETA # Required
+    '';
+  };
 }

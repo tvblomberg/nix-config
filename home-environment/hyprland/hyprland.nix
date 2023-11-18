@@ -26,7 +26,7 @@ xwayland {
 # See https://wiki.hyprland.org/Configuring/Keywords/ for more
 
 # Execute your favorite apps at launch
-exec-once = swww init & swww img ~/.dotfiles/theme/wallpapers/wallpaper.png 
+exec-once = swww init & swww img ~/.dotfiles/theme/wallpapers/wallpaper.png & nm-applet
 
 # Source a file (multi-file configs)
 # source = ~/.config/hypr/myColors.conf
@@ -39,7 +39,7 @@ input {
     kb_layout = us
     kb_variant =
     kb_model =
-    kb_options =
+    kb_options = 
     kb_rules =
 
     follow_mouse = 1
@@ -132,7 +132,7 @@ device:epic-mouse-v1 {
 # Example windowrule v2
 # windowrulev2 = float,class:^(kitty)$,title:^(kitty)$
 # See https://wiki.hyprland.org/Configuring/Window-Rules/ for more
-
+windowrule = float, title:^(Bluetooth Devices)$
 
 # See https://wiki.hyprland.org/Configuring/Keywords/ for more
 $mainMod = SUPER

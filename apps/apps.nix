@@ -1,6 +1,7 @@
 { pkgs, config, ... }:
 
 {
+  programs.btop.enable = true;
 
   home.packages = [
     pkgs.neovim
@@ -20,7 +21,14 @@
     pkgs.pavucontrol
     pkgs.lens
     pkgs.remmina
+    pkgs.networkmanagerapplet
+    pkgs.brave
   ];
+
+  home.file.".config" = {
+    source = ./nvim;
+    recursive = true;
+  };
 
   imports = [
     ./git/git.nix
