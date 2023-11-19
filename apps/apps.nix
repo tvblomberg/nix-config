@@ -24,6 +24,7 @@
     pkgs.networkmanagerapplet
     pkgs.gcc
     pkgs.bottles
+    pkgs.brave
   ];
 
   home.file.".config" = {

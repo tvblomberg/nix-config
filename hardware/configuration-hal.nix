@@ -24,9 +24,9 @@ in {
 
   # Power behavior
   services.logind = {
-    lidSwitch = "suspend-then-hibernate";
-    powerKeyLongPress = "hibernate";
-    powerKey = "hibernate";
+    lidSwitch = "suspend";
+    powerKeyLongPress = "poweroff";
+    powerKey = "lock";
   };
     
   # Needed for steam
