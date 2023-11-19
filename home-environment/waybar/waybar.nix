@@ -9,9 +9,6 @@ in
   # Waybar Configuration
 programs.waybar = {
   enable = true;
-  systemd = {
-    enable = true;
-  };
 };
 
 home.file.".config/waybar/style.css".text = 

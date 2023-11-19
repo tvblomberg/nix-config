@@ -25,6 +25,7 @@
     pkgs.gcc
     pkgs.bottles
     pkgs.brave
+    pkgs.ollama
   ];
 
   home.file.".config" = {

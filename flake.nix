@@ -40,6 +40,7 @@
 
       modules = [ 
         ./home.nix
+
       ];
 
       extraSpecialArgs = { inherit inputs; };

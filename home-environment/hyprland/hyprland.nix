@@ -26,7 +26,7 @@ xwayland {
 # See https://wiki.hyprland.org/Configuring/Keywords/ for more
 
 # Execute your favorite apps at launch
-exec-once = swww init & swww img ~/.dotfiles/theme/wallpapers/wallpaper.png & nm-applet
+exec-once = waybar && swww init & swww img ~/.dotfiles/theme/wallpapers/wallpaper.png & nm-applet
 
 # Source a file (multi-file configs)
 # source = ~/.config/hypr/myColors.conf
