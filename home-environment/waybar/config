@@ -65,7 +65,7 @@
 	"on-click": "nm-applet"
     },
     "custom/poweroff": {
-	"format": " ",
+	"format": "  ",
 	"tooltip": false,
 	"on-click": "wlogout"
     },

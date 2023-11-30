@@ -21,6 +21,10 @@ in {
     ];
   # Power Management
   powerManagement.enable = true;
+  services.power-profiles-daemon.enable = true;
+
+  # Set Kernel to latest
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # Power behavior
   services.logind = {
@@ -51,7 +55,12 @@ in {
   networking.hostName = "hal"; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
+  networking.networkmanager = {
+      enable = true;
+      plugins = [
+        pkgs.networkmanager-openconnect
+      ];
+  };
 
   # Set your time zone.
   time.timeZone = "America/Chicago";
@@ -63,7 +72,7 @@ in {
   services.xserver.displayManager.gdm = {
     enable = true;
     wayland = true;
-  };
+  }; 
 
   # Enable sound.
   sound.enable = true;
@@ -76,19 +85,16 @@ in {
   users.users.invincent = {
     isNormalUser = true;
     initialPassword = "letmeindamnit";
-    extraGroups = [ "wheel" "input" "uinput" "libvirtd"]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "input" "uinput" "libvirtd" "networkmanager" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
     ];
   };
 
   hardware.uinput.enable = true;
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  # environment.systemPackages = with pkgs; [
-  #   vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #   wget
-  # ];
+  environment.systemPackages = [
+    pkgs.openconnect
+  ];
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
@@ -123,6 +129,24 @@ in {
 
   services.fprintd = {
     enable = true;
+
+    tod = {
+      enable = true;
+      driver =  pkgs.libfprint-2-tod1-goodix;
+    };
   };
+
+  security.pam.services.waylock = {};
+
+  # File system
+  programs.thunar = {
+    enable = true;
+
+    plugins = with pkgs.xfce; [ thunar-archive-plugin thunar-volman ];
+  };
+
+  programs.file-roller.enable = true;
+
+  services.gvfs.enable = true;
 }
 

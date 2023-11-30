@@ -15,7 +15,6 @@
     pkgs.discord
     pkgs.podman-desktop
     pkgs.steam
-    pkgs.xfce.thunar
     pkgs.dotnet-sdk
     pkgs.azure-functions-core-tools
     pkgs.pavucontrol
@@ -26,6 +25,20 @@
     pkgs.bottles
     pkgs.brave
     pkgs.ollama
+    pkgs.bitwarden
+    pkgs.azure-cli
+    pkgs.kubectl
+    pkgs.powershell
+    pkgs.rustup
+    # Nvim stuff
+    pkgs.fd
+    pkgs.lazygit
+    pkgs.tree-sitter
+    pkgs.ripgrep
+    pkgs.unzip
+    pkgs.vimPlugins.rust-vim
+    pkgs.lldb
+    pkgs.steam-run
   ];
 
   home.file.".config" = {
@@ -48,6 +61,19 @@
     terminal = false;
     categories = [ "Application" ];
     mimeType = [ "text/html" "text/xml" ];
+    icon = ./teams.svg;
   };
+
+  xdg.desktopEntries."chatgpt" = {
+    name = "ChatGPT";
+    genericName = "Application";
+    exec = "brave --app=https://chat.openai.com";
+    terminal = false;
+    categories = [ "Application" ];
+    mimeType = [ "text/html" "text/xml" ];
+    icon = ./chatgpt.svg;
+  };
+
+  programs.thefuck.enable = true;
 
 }

@@ -6,7 +6,11 @@
   programs.bash = {
     enable = true;
     shellAliases = {
-      vim = "nvim";
+      nvim = "steam-run nvim";
+      vim = "steam-run nvim";
+      vi = "steam-run nvim";
+      pow = "powerprofilesctl";
+      powershell = "pwsh";
     };
   };
 

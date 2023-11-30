@@ -91,6 +91,12 @@ button {
     border-bottom: 3px solid #${borderColor};
 }
 
+#custom-apps,
+#custom-poweroff {
+  color: #${backgroundColor};
+  background-color: #${borderColor};
+}
+
 #window,
 #workspaces {
     margin: 0 4px;

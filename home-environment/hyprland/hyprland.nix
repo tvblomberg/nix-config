@@ -26,7 +26,7 @@ xwayland {
 # See https://wiki.hyprland.org/Configuring/Keywords/ for more
 
 # Execute your favorite apps at launch
-exec-once = waybar && swww init & swww img ~/.dotfiles/theme/wallpapers/wallpaper.png & nm-applet
+exec-once = waybar & swww init & swww img ~/.dotfiles/theme/wallpapers/wallpaper.png & nm-applet
 
 # Source a file (multi-file configs)
 # source = ~/.config/hypr/myColors.conf
@@ -133,6 +133,10 @@ device:epic-mouse-v1 {
 # windowrulev2 = float,class:^(kitty)$,title:^(kitty)$
 # See https://wiki.hyprland.org/Configuring/Window-Rules/ for more
 windowrule = float, title:^(Bluetooth Devices)$
+# Window Rules > Kitty
+windowrule=opacity .9 .85,^(kitty)$
+# Window Rules > Code
+windowrule=opacity .95 .85,^(Code)$
 
 # See https://wiki.hyprland.org/Configuring/Keywords/ for more
 $mainMod = SUPER

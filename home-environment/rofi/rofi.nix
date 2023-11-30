@@ -64,7 +64,7 @@ textbox {
 }
 listview {
     fixed-height:     0;
-    border:           2px dash 0px 0px ;
+    border:           2px solid 0px 0px ;
     border-color:     @separatorcolor;
     spacing:          2px ;
     scrollbar:        true;

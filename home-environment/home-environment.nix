@@ -6,6 +6,7 @@
     pkgs.swww
     pkgs.wl-screenrec
     pkgs.hyprkeys
+    pkgs.grimblast
   ];
 
   imports = [
