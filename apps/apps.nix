@@ -39,6 +39,7 @@
     pkgs.vimPlugins.rust-vim
     pkgs.lldb
     pkgs.steam-run
+    pkgs.wlsunset
   ];
 
   home.file.".config" = {
