@@ -52,7 +52,7 @@
     ./git/git.nix
     ./vscode/vscode.nix
     ./kitty/kitty.nix
-    ./bash/bash.nix
+    ./shell/shell.nix
   ];
 
   xdg.desktopEntries."teams" = {
