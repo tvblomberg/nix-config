@@ -26,6 +26,8 @@
     ./clipman/clipman.nix
     # Remap Keys
     inputs.xremap-flake.homeManagerModules.default
+    # Private stuff
+    ./private.nix
   ];
 
   services.xremap = {

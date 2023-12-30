@@ -40,6 +40,7 @@
     pkgs.lldb
     pkgs.steam-run
     pkgs.wlsunset
+    pkgs.chatgpt-cli
   ];
 
   home.file.".config" = {
@@ -76,5 +77,11 @@
   };
 
   programs.thefuck.enable = true;
+
+  /* tmux config */
+  programs.tmux = {
+      enable = true;
+      keyMode = "vi";
+  };
 
 }
