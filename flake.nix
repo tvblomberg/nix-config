@@ -13,6 +13,7 @@
     hyprland.url = "github:hyprwm/Hyprland";
     nix-colors.url = "github:misterio77/nix-colors";
     xremap-flake.url = "github:xremap/nix-flake";
+    agenix.url = "github:ryantm/agenix";
   };
 
   outputs = { self, nixpkgs, home-manager, hyprland, ... }@inputs:

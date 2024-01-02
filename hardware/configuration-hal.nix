@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running `nixos-help`).
 
-{ config, pkgs, ... }: let
+{ config, pkgs, inputs, agenix, ... }: let
   flake-compat = builtins.fetchTarball { 
     url  = "https://github.com/edolstra/flake-compat/archive/master.tar.gz";
     sha256 = "0m9grvfsbwmvgwaxvdzv6cmyvjnlww004gfxjvcl806ndqaxzy4j";
@@ -18,6 +18,7 @@ in {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration-hal.nix
+      agenix.nixosModules.default
     ];
   # Power Management
   powerManagement.enable = true;
@@ -62,6 +63,10 @@ in {
       ];
   };
 
+  # Open up needed ports 
+  networking.firewall.allowedTCPPorts = [ 57621 ];
+  networking.firewall.allowedUDPPorts = [ 5353 ];
+
   # Set your time zone.
   time.timeZone = "America/Chicago";
 
@@ -94,6 +99,7 @@ in {
 
   environment.systemPackages = [
     pkgs.openconnect
+    inputs.agenix.packages."x86_64-linux".default
   ];
 
   # Enable the OpenSSH daemon.

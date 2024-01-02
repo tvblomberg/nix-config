@@ -12,6 +12,9 @@
       pow = "powerprofilesctl";
       powershell = "pwsh";
     };
+    initExtra = ''
+      export OPENAI_API_KEY=$(cat ~/NotPrivate/chatgpt_token)
+    '';
   };
   
   # Fish Configuration
@@ -24,6 +27,9 @@
         pow = "powerprofilesctl";
         powershell = "pwsh";
       };
+      shellInit = ''
+        export OPENAI_API_KEY=$(cat ~/NotPrivate/chatgpt_token)
+      '';
   };
 
 }

@@ -11,7 +11,7 @@
     pkgs.podman
     pkgs.obsidian
     pkgs.jetbrains.rider
-    pkgs.spotify
+    #pkgs.spotify
     pkgs.discord
     pkgs.podman-desktop
     pkgs.steam
@@ -41,6 +41,9 @@
     pkgs.steam-run
     pkgs.wlsunset
     pkgs.chatgpt-cli
+    pkgs.spotify-tui
+    pkgs.pass
+    pkgs.gnome.seahorse
   ];
 
   home.file.".config" = {
@@ -55,6 +58,7 @@
     ./kitty/kitty.nix
     ./shell/shell.nix
   ];
+
 
   xdg.desktopEntries."teams" = {
     name = "Teams";
@@ -83,5 +87,25 @@
       enable = true;
       keyMode = "vi";
   };
+
+  services.spotifyd = {
+    enable = true;
+    settings = {
+      global = {
+        username = "1270495496";
+        device_name = "hal";
+      };
+    };
+  };
+
+  #GPG for Pass
+  programs.gpg.enable = true;
+
+  services.gpg-agent = {
+    enable = true;
+    pinentryFlavor = "gnome3";
+  };
+
+  services.gnome-keyring.enable = true;
 
 }
