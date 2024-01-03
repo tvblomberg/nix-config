@@ -16,7 +16,7 @@
     agenix.url = "github:ryantm/agenix";
   };
 
-  outputs = { self, nixpkgs, home-manager, hyprland, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, hyprland, agenix, ... }@inputs:
     let
       system = "x86_64-linux";
       lib = nixpkgs.lib;
@@ -25,21 +25,30 @@
     nixosConfigurations = {
       nixos-dev-vm = lib.nixosSystem {
       	inherit system;
-	modules = [
-	  ./hardware/configuration-vm.nix
-	];
+
+        modules = [
+          ./hardware/configuration-vm.nix
+        ];
+
       };
       hal = lib.nixosSystem {
         inherit system;
-	modules = [
-	  ./hardware/configuration-hal.nix
-	];
+
+        modules = [
+          agenix.nixosModules.default
+          ./hardware/configuration-hal.nix
+        ];
+
+        specialArgs = { inherit inputs; };
+
       };
     };
+
     homeConfigurations."invincent" = home-manager.lib.homeManagerConfiguration {
       inherit pkgs;
 
       modules = [ 
+        inputs.agenix.homeManagerModules.age
         ./home.nix
 
       ];

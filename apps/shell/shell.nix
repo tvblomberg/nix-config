@@ -1,6 +1,10 @@
 { pkgs, config, ... }:
 
 {
+  # ChatGPT Token Secret
+  age.secrets.chatgpt = {
+    file = ../../secrets/chatgpt.age;
+  };
 
   # Bash Configuration
   programs.bash = {
@@ -13,7 +17,7 @@
       powershell = "pwsh";
     };
     initExtra = ''
-      export OPENAI_API_KEY=$(cat ~/NotPrivate/chatgpt_token)
+      export OPENAI_API_KEY=$(cat ${config.age.secrets.chatgpt.path})
     '';
   };
   
@@ -28,7 +32,7 @@
         powershell = "pwsh";
       };
       shellInit = ''
-        export OPENAI_API_KEY=$(cat ~/NotPrivate/chatgpt_token)
+        export OPENAI_API_KEY=$(cat ${config.age.secrets.chatgpt.path})
       '';
   };
 

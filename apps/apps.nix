@@ -88,12 +88,19 @@
       keyMode = "vi";
   };
 
+  # ChatGPT Token Secret
+  age.secrets.spotify = {
+    file = ../secrets/spotify.age;
+  };
+
+
   services.spotifyd = {
     enable = true;
     settings = {
       global = {
         username = "1270495496";
         device_name = "hal";
+        password_cmd = "${pkgs.coreutils}/bin/cat ${config.age.secrets.spotify.path}";
       };
     };
   };

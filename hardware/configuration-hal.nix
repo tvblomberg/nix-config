@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running `nixos-help`).
 
-{ config, pkgs, inputs, agenix, ... }: let
+{ config, pkgs, inputs, ... }: let
   flake-compat = builtins.fetchTarball { 
     url  = "https://github.com/edolstra/flake-compat/archive/master.tar.gz";
     sha256 = "0m9grvfsbwmvgwaxvdzv6cmyvjnlww004gfxjvcl806ndqaxzy4j";
@@ -18,7 +18,6 @@ in {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration-hal.nix
-      agenix.nixosModules.default
     ];
   # Power Management
   powerManagement.enable = true;
