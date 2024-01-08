@@ -1,5 +1,4 @@
 { pkgs, config, ... }:
-
 {
   programs.btop.enable = true;
 
@@ -8,14 +7,12 @@
     pkgs.font-awesome
     pkgs.firefox
     pkgs.distrobox
-    pkgs.podman
     pkgs.obsidian
     pkgs.jetbrains.rider
-    #pkgs.spotify
     pkgs.discord
     pkgs.podman-desktop
+    pkgs.podman-tui
     pkgs.steam
-    pkgs.dotnet-sdk
     pkgs.azure-functions-core-tools
     pkgs.pavucontrol
     pkgs.lens
@@ -28,8 +25,8 @@
     pkgs.bitwarden
     pkgs.azure-cli
     pkgs.kubectl
-    pkgs.powershell
     pkgs.rustup
+
     # Nvim stuff
     pkgs.fd
     pkgs.lazygit
@@ -42,8 +39,6 @@
     pkgs.wlsunset
     pkgs.chatgpt-cli
     pkgs.spotify-tui
-    pkgs.pass
-    pkgs.gnome.seahorse
   ];
 
   home.file.".config" = {
@@ -105,14 +100,5 @@
     };
   };
 
-  #GPG for Pass
-  programs.gpg.enable = true;
-
-  services.gpg-agent = {
-    enable = true;
-    pinentryFlavor = "gnome3";
-  };
-
-  services.gnome-keyring.enable = true;
 
 }

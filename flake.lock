@@ -78,6 +78,22 @@
         "type": "github"
       }
     },
+    "dotnet5": {
+      "locked": {
+        "lastModified": 1673947312,
+        "narHash": "sha256-xx/2nRwRy3bXrtry6TtydKpJpqHahjuDB5sFkQ/XNDE=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "2d38b664b4400335086a713a0036aafaa002c003",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "2d38b664b4400335086a713a0036aafaa002c003",
+        "type": "github"
+      }
+    },
     "flake-parts": {
       "inputs": {
         "nixpkgs-lib": "nixpkgs-lib_2"
@@ -448,13 +464,31 @@
         "type": "github"
       }
     },
+    "node14-15-1": {
+      "locked": {
+        "lastModified": 1609764709,
+        "narHash": "sha256-4wzKvq3ARJVM90vR6Ajua4l/P72Og5nzUdwyzwYQ+JA=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "f6e519f39e4d6ee694c2a3d5de8f3f263c57980b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "f6e519f39e4d6ee694c2a3d5de8f3f263c57980b",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "agenix": "agenix",
+        "dotnet5": "dotnet5",
         "home-manager": "home-manager_2",
         "hyprland": "hyprland",
         "nix-colors": "nix-colors",
         "nixpkgs": "nixpkgs_3",
+        "node14-15-1": "node14-15-1",
         "xremap-flake": "xremap-flake"
       }
     },

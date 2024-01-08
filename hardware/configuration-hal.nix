@@ -99,8 +99,13 @@ in {
   environment.systemPackages = [
     pkgs.openconnect
     inputs.agenix.packages."x86_64-linux".default
+    pkgs.powershell
   ];
 
+  environment.shellAliases = {
+    powershell = "pwsh";
+  };
+  
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
@@ -153,5 +158,12 @@ in {
   programs.file-roller.enable = true;
 
   services.gvfs.enable = true;
+
+  # Podman
+  virtualisation.podman = {
+    enable = true;
+    dockerCompat = true;
+    dockerSocket.enable = true;
+  };
 }
 
