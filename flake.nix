@@ -27,7 +27,9 @@
     # Dev Shells
     devShells."${system}" = {
       dotnet5 = (import ./shells/dotnet5.nix { inherit pkgs inputs; });
+      kti = (import ./shells/dotnet5.nix { inherit pkgs inputs; });
       dotnet6 = (import ./shells/dotnet6.nix { inherit pkgs inputs; });
+      apollo = (import ./shells/dotnet6.nix { inherit pkgs inputs; });
       dotnet8 = (import ./shells/dotnet8.nix { inherit pkgs inputs; });
     };
 

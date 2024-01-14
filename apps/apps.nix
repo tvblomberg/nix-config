@@ -12,6 +12,7 @@
     pkgs.discord
     pkgs.podman-desktop
     pkgs.podman-tui
+    pkgs.podman-compose
     pkgs.steam
     pkgs.azure-functions-core-tools
     pkgs.pavucontrol

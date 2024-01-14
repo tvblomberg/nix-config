@@ -89,7 +89,7 @@ in {
   users.users.invincent = {
     isNormalUser = true;
     initialPassword = "letmeindamnit";
-    extraGroups = [ "wheel" "input" "uinput" "libvirtd" "networkmanager" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "input" "uinput" "libvirtd" "networkmanager" "podman" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
     ];
   };
@@ -164,6 +164,14 @@ in {
     enable = true;
     dockerCompat = true;
     dockerSocket.enable = true;
+  };
+
+  /* Screen Sharing */
+  services.pipewire = {
+    enable = true;
+    wireplumber = {
+      enable = true;
+    };
   };
 }
 
