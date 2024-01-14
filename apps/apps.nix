@@ -9,7 +9,6 @@
     pkgs.distrobox
     pkgs.obsidian
     pkgs.jetbrains.rider
-    pkgs.discord
     pkgs.podman-desktop
     pkgs.podman-tui
     pkgs.podman-compose
@@ -74,6 +73,16 @@
     categories = [ "Application" ];
     mimeType = [ "text/html" "text/xml" ];
     icon = ./chatgpt.svg;
+  };
+
+  xdg.desktopEntries."discord" = {
+    name = "Discord";
+    genericName = "Application";
+    exec = "brave --app=https://discord.com";
+    terminal = false;
+    categories = [ "Application" ];
+    mimeType = [ "text/html" "text/xml" ];
+    icon = ./discord.svg;
   };
 
   programs.thefuck.enable = true;
